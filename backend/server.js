@@ -3,24 +3,25 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Helps read login data
 app.use(express.static(__dirname));
 
-// 1. Home Route: Shows your Login Page
+// ROUTE 1: Shows the Black Login Page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// 2. Dashboard Route: Shows your "Proper" Website
+// ROUTE 2: Shows the Green Proper Website (Dashboard)
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// 3. Login Logic: Moves user from Home to Dashboard
-app.post('/api/login', (req, res) => {
+// ROUTE 3: The Redirect Logic
+app.post('/login', (req, res) => {
     const { username } = req.body;
-    // After logging in, REDIRECT the browser to the dashboard
+    console.log(`Pavan Kumar's App: User ${username} is logging in.`);
+    // THIS REDIRECTS YOU TO THE PROPER WEBSITE
     res.redirect('/dashboard');
 });
 

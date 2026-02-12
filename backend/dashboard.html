@@ -1,25 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pavan Kumar | Dashboard</title>
+    <meta charset="UTF-8">
+    <title>Wild Photography Adventures</title>
     <style>
-        body { background: #121212; color: white; font-family: sans-serif; text-align: center; padding: 50px; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; }
-        .photo-card { background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #00d4ff; }
-        h1 { color: #00d4ff; }
+        body { font-family: sans-serif; background: #f0f4f0; margin: 0; color: #333; }
+        .header { background: #2d5a27; color: white; padding: 20px; text-align: center; }
+        .sub-header { background: #2d5a27; padding-bottom: 20px; text-align: center; color: white; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .stats-row { display: flex; gap: 20px; margin-top: 20px; }
+        .card { background: white; padding: 20px; border-radius: 15px; flex: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .photo-box { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        .photo-box img { width: 100%; height: 200px; object-fit: cover; }
+        .photo-box h3 { margin: 10px 0; font-size: 18px; }
+        .photo-box p { color: #666; font-size: 14px; margin-bottom: 15px; }
+        button.confirm { background: #4a7c44; color: white; border: none; padding: 10px 20px; border-radius: 5px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h1>📸 Pavan Kumar Photography Dashboard</h1>
-    <p>Success! You are now viewing your proper website.</p>
-    
-    <div class="gallery">
-        <div class="photo-card"><h3>Tiger in Wild</h3></div>
-        <div class="photo-card"><h3>Mountain Eagle</h3></div>
-        <div class="photo-card"><h3>Forest Mist</h3></div>
+    <div class="header">
+        <h1>🐾 WILD PHOTOGRAPHY ADVENTURES</h1>
+        <p>Current Explorer: <b>Pavan Kumar</b></p>
     </div>
 
-    <br><br>
-    <a href="/" style="color: #00d4ff;">Logout</a>
+    <div class="container">
+        <div class="stats-row">
+            <div class="card">
+                <h3>🗓 Schedule a Trip</h3>
+                <select style="width:100%; padding:10px;"><option>Wild Safari Ride</option></select>
+                <button class="confirm" style="margin-top:10px;">Confirm Booking</button>
+            </div>
+            <div class="card">
+                <h3>📝 Upcoming Bookings</h3>
+                <p><b>Pavan Kumar</b> booked Wild Safari Ride on 2026-02-12</p>
+            </div>
+        </div>
+
+        <h2 style="text-align:center; margin-top:40px;">Photography Gallery</h2>
+        <div class="gallery">
+            <div class="photo-box">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" alt="Lion">
+                <h3>African Lion</h3>
+                <p>Photographer: Pavan Kumar</p>
+            </div>
+            <div class="photo-box">
+                <img src="https://images.unsplash.com/photo-1475855581690-80accde3ae2b" alt="Eagle">
+                <h3>Golden Eagle</h3>
+                <p>Photographer: Pavan Kumar</p>
+            </div>
+            <div class="photo-box">
+                <img src="https://images.unsplash.com/photo-1557008075-7f2c5efa4cfd" alt="Elephant">
+                <h3>Wild Elephant</h3>
+                <p>Photographer: Pavan Kumar</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
