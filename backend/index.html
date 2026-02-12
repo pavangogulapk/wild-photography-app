@@ -2,19 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pavan Kumar Photography</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #121212; color: white; text-align: center; padding: 50px; }
-        .card { background: #1e1e1e; padding: 30px; border-radius: 15px; border: 1px solid #333; display: inline-block; }
+        .container { background: #1e1e1e; padding: 30px; border-radius: 15px; border: 1px solid #333; display: inline-block; max-width: 400px; }
         h1 { color: #00d4ff; }
-        .status { color: #28a745; font-weight: bold; }
+        .post-list { text-align: left; margin-top: 20px; background: #252525; padding: 10px; border-radius: 8px; }
+        button { background: #00d4ff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>📸 Wild Photography App</h1>
-        <p>User: <span id="username" style="font-weight:bold;">Pavan Kumar</span></p>
-        <p>Status: <span class="status">● Rendered Successfully</span></p>
+    <div class="container">
+        <h1>📸 Photography App</h1>
+        <p>Current User: <span id="display-user" style="color: #00d4ff; font-weight: bold;">Loading...</span></p>
+        
+        <div class="post-list" id="post-container">
+            <strong>Your Saved Posts:</strong>
+            <ul id="posts"></ul>
+        </div>
+
+        <hr style="margin: 20px 0; border: 0.5px solid #333;">
+        
+        <input type="text" id="new-user-input" placeholder="Enter new username" style="padding: 8px; border-radius: 5px; border: none;">
+        <button onclick="login()">Login</button>
     </div>
+
+    <script>
+        // Fetch and Render Profile
+        function loadProfile() {
+            fetch('/api/profile')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('display-user').innerText = data.username;
+                    const list = document.getElementById('posts');
+                    list.innerHTML = "";
+                    data.posts.forEach(post => {
+                        list.innerHTML += `<li>${post.title} (${post.date})</li>`;
+                    });
+                });
+        }
+
+        // Login function to change name but keep data
+        function login() {
+            const name = document.getElementById('new-user-input').value;
+            fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ newUsername: name })
+            })
+            .then(res => res.json())
+            .then(() => {
+                loadProfile(); // Refresh render
+                document.getElementById('new-user-input').value = "";
+            });
+        }
+
+        loadProfile(); // Initial render
+    </script>
 </body>
 </html>
