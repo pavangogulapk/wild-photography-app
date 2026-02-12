@@ -1,27 +1,23 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const port = process.env.PORT || 8000; // Important for Koyeb
 
-// Use the port Koyeb provides, or default to 8000
-const PORT = process.env.PORT || 8000;
+app.use(express.json());
 
-// This line tells the server to look in the CURRENT folder for files
+// This line tells the server to look for index.html in the same folder
 app.use(express.static(__dirname));
 
-// This handles the "Pavan Kumar" profile data
+// The main route that renders the frontend
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Profile API for your saved info
 app.get('/api/profile', (req, res) => {
-    res.json({ 
-        name: "Pavan Kumar", 
-        role: "Wild Photographer",
-        status: "Active" 
-    });
+    res.json({ name: "Pavan Kumar", status: "Active" });
 });
 
-// THIS IS THE FIX: This sends the index.html file whenever someone visits the link
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'));
-});
-
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, "0.0.0.0", () => {
+    console.log(`Server is running on port ${port}`);
 });
