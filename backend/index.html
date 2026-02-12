@@ -2,63 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavan Kumar Photography</title>
+    <title>Login | Pavan Photography</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #121212; color: white; text-align: center; padding: 50px; }
-        .container { background: #1e1e1e; padding: 30px; border-radius: 15px; border: 1px solid #333; display: inline-block; max-width: 400px; }
-        h1 { color: #00d4ff; }
-        .post-list { text-align: left; margin-top: 20px; background: #252525; padding: 10px; border-radius: 8px; }
+        body { font-family: sans-serif; background: #121212; color: white; text-align: center; padding-top: 100px; }
+        .login-box { background: #1e1e1e; padding: 40px; display: inline-block; border-radius: 15px; border: 1px solid #333; }
+        input { padding: 10px; margin: 10px; border-radius: 5px; border: none; width: 200px; }
         button { background: #00d4ff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📸 Photography App</h1>
-        <p>Current User: <span id="display-user" style="color: #00d4ff; font-weight: bold;">Loading...</span></p>
-        
-        <div class="post-list" id="post-container">
-            <strong>Your Saved Posts:</strong>
-            <ul id="posts"></ul>
-        </div>
-
-        <hr style="margin: 20px 0; border: 0.5px solid #333;">
-        
-        <input type="text" id="new-user-input" placeholder="Enter new username" style="padding: 8px; border-radius: 5px; border: none;">
-        <button onclick="login()">Login</button>
+    <div class="login-box">
+        <h1>📸 Welcome</h1>
+        <p>Login to see Pavan's Proper Website</p>
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username (Pavan Kumar)" required> <br>
+            <input type="password" placeholder="Password" required> <br>
+            <button type="submit">Login Now</button>
+        </form>
     </div>
-
-    <script>
-        // Fetch and Render Profile
-        function loadProfile() {
-            fetch('/api/profile')
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('display-user').innerText = data.username;
-                    const list = document.getElementById('posts');
-                    list.innerHTML = "";
-                    data.posts.forEach(post => {
-                        list.innerHTML += `<li>${post.title} (${post.date})</li>`;
-                    });
-                });
-        }
-
-        // Login function to change name but keep data
-        function login() {
-            const name = document.getElementById('new-user-input').value;
-            fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ newUsername: name })
-            })
-            .then(res => res.json())
-            .then(() => {
-                loadProfile(); // Refresh render
-                document.getElementById('new-user-input').value = "";
-            });
-        }
-
-        loadProfile(); // Initial render
-    </script>
 </body>
 </html>
