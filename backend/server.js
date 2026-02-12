@@ -15,13 +15,12 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// MODIFIED LOGIN LOGIC:
 app.post('/login', (req, res) => {
     const { username } = req.body; 
-    // This sends the name in the URL: /dashboard?name=Pavan
+    // This passes the name to the next page
     res.redirect(`/dashboard?name=${encodeURIComponent(username)}`); 
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
