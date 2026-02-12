@@ -1,27 +1,28 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+
+// Render.com will provide the PORT automatically
 const PORT = process.env.PORT || 8000;
 
+// This allows the server to understand the data from your Login form
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// ROUTE 1: Shows the Black Login Page
+// 1. Show the Login Page when you first open the link
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// ROUTE 2: Shows the Green Proper Website (Dashboard)
+// 2. The route for your "Proper" Green Website
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
-// ROUTE 3: The Redirect Logic
+// 3. This handles the Login button click
 app.post('/login', (req, res) => {
-    const { username } = req.body;
-    console.log(`Pavan Kumar's App: User ${username} is logging in.`);
-    // THIS REDIRECTS YOU TO THE PROPER WEBSITE
+    // This command physically changes the URL in your browser to /dashboard
     res.redirect('/dashboard');
 });
 

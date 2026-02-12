@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>Login | Wild Photography</title>
     <style>
-        body { font-family: sans-serif; background: #0a0a0a; color: white; text-align: center; padding-top: 80px; }
-        .login-card { background: #1a1a1a; padding: 40px; display: inline-block; border-radius: 20px; border: 1px solid #333; width: 350px; }
-        h1 { color: #00d4ff; font-size: 28px; }
-        input { width: 80%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; background: #2a2a2a; color: white; }
-        button { width: 85%; background: #00d4ff; color: black; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        button:hover { background: #00b8e6; }
+        body { font-family: sans-serif; background: #0a0a0a; color: white; text-align: center; padding-top: 100px; }
+        .login-box { background: #1a1a1a; padding: 40px; display: inline-block; border-radius: 20px; border: 1px solid #333; }
+        h1 { color: #00d4ff; }
+        input { padding: 12px; margin: 10px; border-radius: 8px; border: none; width: 250px; }
+        button { background: #00d4ff; color: black; border: none; padding: 12px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="login-card">
+    <div class="login-box">
         <h1>📸 Photography App</h1>
-        <p>Current User: <b>Pavan Kumar</b></p>
+        <p>User: <b>Pavan Kumar</b></p>
+        
         <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Enter username" required>
+            <input type="text" name="username" placeholder="Enter username" required> <br>
             <button type="submit">Login</button>
         </form>
     </div>
