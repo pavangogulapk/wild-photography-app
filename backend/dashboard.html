@@ -12,25 +12,35 @@
         .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
         .photo-box { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
         .photo-box img { width: 100%; height: 200px; object-fit: cover; }
-        .confirm-btn { background: #4a7c44; color: white; border: none; padding: 10px 20px; border-radius: 5px; width: 100%; cursor: pointer; }
+        .confirm-btn { background: #4a7c44; color: white; border: none; padding: 12px; border-radius: 5px; width: 100%; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>🐾 WILD PHOTOGRAPHY ADVENTURES</h1>
-        <p>Current Explorer: <b>Pavan Kumar</b></p>
+        <p>Welcome back, <b>Pavan Kumar</b></p>
     </div>
 
     <div class="container">
         <div class="stats-row">
             <div class="card">
                 <h3>🗓 Schedule a Trip</h3>
-                <select style="width:100%; padding:10px;"><option>Wild Safari Ride</option></select>
-                <button class="confirm-btn" style="margin-top:10px;">Confirm Booking</button>
+                <label>Select Adventure:</label>
+                <select id="tripSelect">
+                    <option>Wild Safari Ride</option>
+                    <option>Mountain Trekking</option>
+                    <option>Deep Sea Exploration</option>
+                </select>
+                <label style="display:block; margin-top:10px;">Select Date:</label>
+                <input type="date" id="tripDate">
+                <button class="confirm-btn" onclick="alert('Booking Confirmed for Pavan Kumar!')">Confirm Booking</button>
             </div>
+
             <div class="card">
-                <h3>📝 Upcoming Bookings</h3>
-                <p><b>Pavan Kumar</b> booked Wild Safari Ride on 2026-02-12</p>
+                <h3>📝 Current Status</h3>
+                <p>Status: <span style="color: green; font-weight: bold;">● Active Explorer</span></p>
+                <p>User ID: <b>PK-2026</b></p>
             </div>
         </div>
 
